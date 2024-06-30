@@ -1,0 +1,37 @@
+#cloud-config
+autoinstall:
+  updates: security
+  apt:
+    disable_suites: [security]
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: en
+  ssh:
+    install-server: true
+    allow-pw: true
+    disable_root: false
+    ssh_quiet_keygen: true
+    allow_public_ssh_keys: true
+    allow_password_authentication: true
+  packages:
+    - qemu-guest-agent
+    - sudo
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  user-data:
+    package_upgrade: false
+    timezone: America/New_York
+    users:
+      - name: guney
+        groups: [adm, sudo]
+        lock-passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        #passwd: 61guney61
+        # - or -
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDkfXQKBUpGYs+PjfmQtxQch5v7XenhlH7oNINuxunk/rrKEjQwMHw41xxU6vrlfDu05hJgeD8M5Yq5ECsp9/0WTcpZLvNcbzBwF2CwUkRk14uKzksS5cqc8SDEJt8jPeDXN/PNIV4+KrRuZua1Mg1pagyHjsPPScdh9jdLkWz+ZPdIUpxA2/HsHGiq64Fn5sGKAbQoRLPIz3lY1VrBgUjl5I0Py1oGMl4itwVZ0Ke8KdG9RCYtfQ6pqG3fk+nOWsjsTbXHIK0a6pr7ZoOPFhL73gWV2gNCKNFqN9W0k4UtkPNikVX8MWbYW0MvdM6dN5WT4sF3RP9Qfay9ntVx5AkqE7FpvdQkcg05Cl6cHUT7n32jm7ZdFAawRxQmuyRgHFarcq58chCHUkObmtelNrYydwa4/tKTw2EUlsv2thfLmLTAMhCfXBZCWoDhzkDTJuZvBnMDIS7XxJyjN0iKIo1aJMzQJ8DFf8suZ90O3c8JnFTlyjtaGAqMQsgcfnCvBGU= guneycansanli@Guneycans-MBP

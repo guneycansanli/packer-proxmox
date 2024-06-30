@@ -1,0 +1,4 @@
+credentials.pkr.hcl
+variables.json
+variables.auto.pkrvars.hcl
+Makefile
