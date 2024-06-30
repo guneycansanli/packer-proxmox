@@ -7,7 +7,6 @@ I use [this](https://github.com/ChristianLempa/boilerplates/tree/main/packer/pro
 
 - Proxmox API token with permissions to create VMs and templates
 - Packer 1.7.2 or higher
-- Gitlab shell executor runner with Docker installed
 
 ## How this works
 Packer will create a VM from a Proxmox template, and then run a series of scripts to configure the VM. Once the scripts have completed, the VM will be shutdown and converted to a template.
@@ -29,8 +28,6 @@ For environment variables you can set them in your shell, or you can set them in
 | `PROXMOX_API_TOKEN_SECRET` | Proxmox API token secret | Yes | |
 | `RUNNER_IP_ADDRESS` | IP address of the Gitlab runner | Yes | Only for build |
 | `PASSWORD` | Password for user `ubuntu` | Yes | Only for build |
-
-**Note:** about `RUNNER_IP_ADDRESS` variable: This variable is only required if you are using the Gitlab CI/CD pipeline. The reason for this is that the runner is running in Docker, and the Docker container does not have access to the Proxmox API. To get around this, we need to use the IP address of the host machine.
 
 ### Username and password
 The default username for the VM is `ubuntu`. 
